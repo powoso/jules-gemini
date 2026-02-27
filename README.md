@@ -15,37 +15,62 @@ A simple full-stack application that scrapes posts from **Reddit** and **Twitter
 - **Scraping**: `requests` (Reddit RSS), `playwright` (Twitter/XCancel)
 - **Frontend**: HTML5, Vanilla JavaScript, Tailwind CSS (CDN)
 
-## Installation
+## Quick Start (MacOS/Linux)
+
+We have provided a helper script to setup the environment and run the app easily.
 
 1.  **Clone the repository**:
     ```bash
-    git clone <repository-url>
+    git clone https://github.com/powoso/jules-gemini.git
     cd social-media-scraper
+    ```
+    *(Note: If the directory name after cloning is different, `cd` into that directory)*
+
+2.  **Run the Setup & Start Script**:
+    This script will create a virtual environment, install dependencies, and start the server.
+    ```bash
+    chmod +x run.sh
+    ./run.sh
+    ```
+
+3.  **Open the App**:
+    Once the server starts, open your browser and go to: `http://localhost:8000`
+
+---
+
+## Manual Installation
+
+If you prefer to run commands manually:
+
+1.  **Create a Virtual Environment**:
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate
     ```
 
 2.  **Install Dependencies**:
-    It is recommended to use a virtual environment.
     ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows: venv\Scripts\activate
     pip install -r requirements.txt
     ```
 
 3.  **Install Playwright Browsers**:
-    Required for the Twitter scraper to work.
+    Required for the Twitter scraper.
     ```bash
     playwright install chromium
     ```
 
-## Running the App
-
-1.  **Start the Server**:
+4.  **Run the App**:
     ```bash
     uvicorn app.main:app --reload
     ```
 
-2.  **Open the App**:
-    Navigate to `http://localhost:8000` in your web browser.
+## Troubleshooting "Command not found"
+
+If you see errors like `zsh: command not found: pip` or `playwright`, it usually means you aren't inside the virtual environment.
+
+- **Ensure you have Python installed**: Run `python3 --version`. If not, install it via `brew install python` (on Mac).
+- **Activate the environment**: Run `source venv/bin/activate`. You should see `(venv)` in your terminal prompt.
+- **Run with python module**: Instead of `uvicorn`, try `python3 -m uvicorn app.main:app --reload`.
 
 ## Testing
 
@@ -58,8 +83,3 @@ PYTHONPATH=. pytest tests/test_scrapers.py
 # Verify frontend via Playwright script
 python3 verify_frontend.py
 ```
-
-## Notes
-
-- The Twitter scraper relies on `xcancel.com`, a Nitter instance. If this instance goes down or changes its structure, the Twitter feed may stop working. You can update the URL in `app/services/twitter.py` if needed.
-- Reddit scraping uses the public RSS feeds which are subject to rate limits.
