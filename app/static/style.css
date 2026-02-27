@@ -1,0 +1,42 @@
+/* Custom styles complementing Tailwind */
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4b5563;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#feed-container > div {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Stagger animations for children */
+#feed-container > div:nth-child(1) { animation-delay: 0.1s; }
+#feed-container > div:nth-child(2) { animation-delay: 0.15s; }
+#feed-container > div:nth-child(3) { animation-delay: 0.2s; }
+#feed-container > div:nth-child(4) { animation-delay: 0.25s; }
+#feed-container > div:nth-child(5) { animation-delay: 0.3s; }
+#feed-container > div:nth-child(6) { animation-delay: 0.35s; }
+#feed-container > div:nth-child(7) { animation-delay: 0.4s; }
+#feed-container > div:nth-child(8) { animation-delay: 0.45s; }
+#feed-container > div:nth-child(9) { animation-delay: 0.5s; }
+#feed-container > div:nth-child(10) { animation-delay: 0.55s; }

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Scraper</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="static/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen font-sans">
+    <div class="container mx-auto px-4 py-8">
+        <header class="mb-8 flex flex-col md:flex-row justify-between items-center border-b border-gray-700 pb-6">
+            <h1 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500 mb-4 md:mb-0">
+                <i class="fas fa-globe-americas mr-2 text-blue-400"></i>Social Feed
+            </h1>
+
+            <div class="flex items-center space-x-4">
+                <div class="bg-gray-800 rounded-lg p-1 flex">
+                    <button onclick="setSource('all')" id="btn-all" class="px-4 py-2 rounded-md text-sm font-medium transition-colors bg-blue-600 text-white">All</button>
+                    <button onclick="setSource('reddit')" id="btn-reddit" class="px-4 py-2 rounded-md text-sm font-medium transition-colors hover:bg-gray-700 text-gray-400">Reddit</button>
+                    <button onclick="setSource('twitter')" id="btn-twitter" class="px-4 py-2 rounded-md text-sm font-medium transition-colors hover:bg-gray-700 text-gray-400">Twitter</button>
+                </div>
+
+                <button onclick="fetchFeed()" class="bg-gray-800 hover:bg-gray-700 text-white p-2 rounded-full transition-colors w-10 h-10 flex items-center justify-center">
+                    <i class="fas fa-sync-alt transform transition-transform" id="refresh-icon"></i>
+                </button>
+            </div>
+        </header>
+
+        <div id="controls" class="mb-6 flex gap-4 hidden">
+             <!-- Future controls for subreddit/username input -->
+        </div>
+
+        <div id="loader" class="hidden flex justify-center items-center py-20">
+            <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+        </div>
+
+        <div id="feed-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Posts will be injected here -->
+        </div>
+
+        <div id="error-message" class="hidden bg-red-900/50 border border-red-500 text-red-200 p-4 rounded-lg text-center mt-4">
+            Failed to load feed. Please try again.
+        </div>
+    </div>
+
+    <script src="static/script.js"></script>
+</body>
+</html>
